@@ -6,7 +6,15 @@ use App\Http\Controllers\OperarioController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\CuotasController;
+use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
+
+Route::controller(SocialiteController::class)->group(function(){
+    Route::get('auth/google-callback', 'googleAuthentication')->name('auth.google-callback');
+    Route::get('auth/google', 'googlelogin')->name('auth.google'); // Corrección aquí
+});
+
+
 
 Route::view('/','welcome');
 route::resource('tareas',TareasController::class);
